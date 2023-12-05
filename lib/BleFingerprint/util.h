@@ -18,6 +18,7 @@ const BLEUUID espresenseUUID(0xe5ca1ade, 0xf007, 0xba11, 0x0000000000000000);
 
 const BLEUUID nutUUID((uint16_t)0x1803);
 const BLEUUID miFloraUUID((uint16_t)0xfe95);
+const BLEUUID lywsd02UUID((uint16_t)0xfe95);
 
 const BLEUUID fitbitUUID(0xadabfb00, 0x6e7d, 0x4601, 0xbda2bffaa68956ba);
 

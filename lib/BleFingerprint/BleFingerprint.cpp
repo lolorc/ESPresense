@@ -275,6 +275,20 @@ void BleFingerprint::fingerprintServiceData(NimBLEAdvertisedDevice *advertisedDe
         } else if (uuid == smartTagUUID) {  // found Samsung smart tag
             asRssi = haveTxPower ? BleFingerprintCollection::rxRefRssi + txPower : NO_RSSI;
             setId("smarttag:" + String(strServiceData.length()), ID_TYPE_SMARTTAG);
+        } else if (uuid == lywsd02UUID) {
+            asRssi = haveTxPower ? BleFingerprintCollection::rxRefRssi + txPower : NO_RSSI;
+            setId("lywsd02:" + getMac(), ID_TYPE_LYWSD02);
+            if (strServiceData.length() == 17) {
+                if (strServiceData[13] == 0x10 && strServiceData[14] == 2) {
+                    auto serviceData = strServiceData.c_str();
+                    int16_t x = (serviceData[16] << 8) | serviceData[15];
+                    if (strServiceData[12] == 0x04) {
+                       temp = float(x) / 10.0f;
+                    } else if (strServiceData[12] == 0x06) {
+		       humidity = float(x) / 10.0f;
+                    }
+                }
+            }
         } else if (uuid == miThermUUID) {
             asRssi = haveTxPower ? BleFingerprintCollection::rxRefRssi + txPower : NO_RSSI;
             if (strServiceData.length() == 15) {  // custom format

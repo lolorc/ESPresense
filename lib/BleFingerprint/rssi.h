@@ -14,6 +14,7 @@
 
 #define NUT_TX int8_t(-12)
 #define FLORA_TX int8_t(-10)
+#define LYWSD02_TX int8_t(-10)
 
 #define EDDYSTONE_ADD_1M int8_t(-41)
 #endif
